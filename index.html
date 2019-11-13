@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Tool to visualize TSP solutions">
+  <meta name="author" content="Joonas Puura">
+
+  <title>Euclidean TSP visualisation</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/vis.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div id="titlerow" class="col-lg-12 text-center">
+        <h1 class="mt-5 display-4">TSP solution visualisation tool</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="viscontainer">
+              <div id="svg">
+              </div>
+          </div>
+        </div>
+        <!-- Right side of visualization -->
+        <div class="col-lg-4">
+          <div class="citiesar">
+          <label for="field-size" class="col-form-label"><span>Field size in pixels (width, height)</span></label>
+            <input class="form-control" type="number" id="width-input" min="0" value="1000" />
+            <input class="form-control" type="number" id="height-input" min="0" value="1000" />
+            <button class="btn btn-primary" id='updatefield'>Apply</button>
+            <div>
+            <label for="citiesarea" class="col-form-label"><h5>Cities coordinates</h5></label>
+          </div>
+            <textarea id="citiesarea" class="form-control" rows="4"></textarea>
+            <button class="btn btn-primary" id='addcities'>Add cities</button>
+            <div>
+            <label for="orderarea" class="col-form-label"><h5>Visiting order</h5></label>
+          </div>
+          <div>
+            <textarea id="orderarea" class="form-control" rows="4"></textarea>
+            <button class="btn btn-primary" id='addpath'>Add path</button>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row pathoverview">
+      <div class="col-lg-3">
+        <label for="legalpath"> Path legal:</label><span id="legalpath">False</span>
+      </div>
+      <div class="col-lg-3">
+        <label for="totaldist">Total distance:</label> <span id="totaldist">NAN</span>
+      </div>
+    </div>
+    <div class="row addbuttons">
+        <div class="col-lg-4">
+        <button id='download' class="btn btn-info">Save as PNG</button>
+        <button id='clearsvg' class="btn btn-danger">Clear all</button>
+      </div>
+    </div>
+
+    <div id="tutorial">
+      <div class="row">
+        <div class="col-lg-1">
+          <h3 class="text-center">Guide</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Adding cities to the plot:</h4>
+          <p>To visualize the city locations, add the coordinates to area "Cities" in the following format</p>
+          <pre><xmp class="border">x1 y1
+x2 y2
+x3 y3
+... </xmp>
+          </pre>
+        </div>
+        <div id="code-example" class="col-lg-6">
+          <h4>Adding path to the plot:</h4>
+          <p>To visualize the order of visited cities, add the order (with index started at 0).The last edge, which brings you back to start, will be added for you.</p>
+          <pre><xmp class="border">0
+1
+2
+...</xmp>
+                      </pre>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/saveSvgAsPng.js"></script>
+  <script src="js/vis.js"></script>
+</body>
+
+</html>

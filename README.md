@@ -1,2 +1,5 @@
 # tspvis
-Visualization of TSP solutioons
+Tool to generate worlds and to visualize tsp results
+
+## Demo
+<https://abercus.github.io/tspvis/>
